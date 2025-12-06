@@ -1,0 +1,57 @@
+{
+  "knockout_stage": {
+    "round_of_32": [
+      { "match": "M73", "team1": "1H", "team2": "2J" },
+      { "match": "M74", "team1": "1I", "team2": "3 CDFGH" },
+      { "match": "M75", "team1": "1C", "team2": "2F" },
+      { "match": "M76", "team1": "2E", "team2": "2I" },
+      { "match": "M77", "team1": "1A", "team2": "3 CEFHI" },
+      { "match": "M78", "team1": "2D", "team2": "2G" },
+      { "match": "M79", "team1": "1D", "team2": "3 BEFIJ" },
+      { "match": "M80", "team1": "1K", "team2": "3 DEIJL" },
+      { "match": "M81", "team1": "1G", "team2": "3 AEHIJ" },
+      { "match": "M82", "team1": "1B", "team2": "3 EFGIJ" },
+      { "match": "M83", "team1": "2K", "team2": "2L" },
+      { "match": "M84", "team1": "1F", "team2": "2C" },
+      { "match": "M85", "team1": "1L", "team2": "3 EHIJK" },
+      { "match": "M86", "team1": "1J", "team2": "2H" },
+      { "match": "M87", "team1": "2K", "team2": "2L" },
+      { "match": "M88", "team1": "1E", "team2": "3 ABCDF" }
+    ],
+
+    "round_of_16": [
+      { "match": "M89", "team1": "W74", "team2": "W77" },
+      { "match": "M90", "team1": "W73", "team2": "W75" },
+      { "match": "M91", "team1": "W76", "team2": "W78" },
+      { "match": "M92", "team1": "W79", "team2": "W80" },
+      { "match": "M93", "team1": "W83", "team2": "W84" },
+      { "match": "M94", "team1": "W81", "team2": "W82" },
+      { "match": "M95", "team1": "W86", "team2": "W88" },
+      { "match": "M96", "team1": "W85", "team2": "W87" }
+    ],
+
+    "quarter_finals": [
+      { "match": "M97", "team1": "W89", "team2": "W90" },
+      { "match": "M98", "team1": "W93", "team2": "W94" },
+      { "match": "M99", "team1": "W91", "team2": "W92" },
+      { "match": "M100", "team1": "W95", "team2": "W96" }
+    ],
+
+    "semi_finals": [
+      { "match": "M101", "team1": "W97", "team2": "W98" },
+      { "match": "M102", "team1": "W99", "team2": "W100" }
+    ],
+
+    "bronze_final": {
+      "match": "M103",
+      "team1": "L101",
+      "team2": "L102"
+    },
+
+    "final": {
+      "match": "M104",
+      "team1": "W101",
+      "team2": "W102"
+    }
+  }
+}
