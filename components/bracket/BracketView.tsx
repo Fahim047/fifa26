@@ -8,6 +8,12 @@ import { Match, Team } from "@/types";
 import { MatchNode } from "./MatchNode";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function BracketView() {
   const {
@@ -21,6 +27,7 @@ export function BracketView() {
   const [showChampionModal, setShowChampionModal] = useState(false);
   const bracketRef = useRef<HTMLDivElement>(null);
   const championModalRef = useRef<HTMLDivElement>(null);
+  const hiddenChampionRef = useRef<HTMLDivElement>(null);
   const lastChampionId = useRef<string | null>(null);
 
   // Reload bracket when standings or bestThirds change
@@ -83,16 +90,20 @@ export function BracketView() {
   };
 
   const handleChampionDownload = async () => {
-    if (championModalRef.current) {
+    // Prefer the hidden ref if available (better quality/controlled), else modal ref
+    const targetRef = hiddenChampionRef.current || championModalRef.current;
+
+    if (targetRef) {
       try {
-        const dataUrl = await toPng(championModalRef.current, {
+        const dataUrl = await toPng(targetRef, {
           backgroundColor: "#000000",
-          filter: (node) => {
-            return !node.classList?.contains("noprint");
-          },
+          // No need for filter if we use the clean hidden ref
           style: {
             transform: "scale(1)",
           },
+          // Force a good width if using hidden ref
+          width: hiddenChampionRef.current ? 800 : undefined,
+          height: hiddenChampionRef.current ? 600 : undefined,
         });
         const link = document.createElement("a");
         link.download = "fifa-2026-champion.png";
@@ -134,13 +145,27 @@ export function BracketView() {
           <Button onClick={handleReset} variant="destructive" className="gap-2">
             ↺ Reset
           </Button>
-          <Button
-            onClick={handleDownload}
-            variant="secondary"
-            className="gap-2 text-xs md:text-sm h-8 md:h-10 px-3 md:px-4"
-          >
-            <span>📷</span> Save Image
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="secondary"
+                className="gap-2 text-xs md:text-sm h-8 md:h-10 px-3 md:px-4"
+              >
+                <span>📷</span> Save Image
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={handleDownload}>
+                Full Pathway
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={handleChampionDownload}
+                disabled={!rounds["Final"]?.[0]?.winner}
+              >
+                Winner Card
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 
@@ -292,6 +317,37 @@ export function BracketView() {
             </div>
           </div>
         </motion.div>
+      )}
+      {/* Hidden Render for Champion Export (Ensures High Quality & No UI clutter) */}
+      {rounds["Final"]?.[0]?.winner && (
+        <div style={{ position: "absolute", left: "-9999px", top: 0 }}>
+          <div
+            ref={hiddenChampionRef}
+            className="bg-card rounded-xl p-12 text-center border-4 border-primary relative z-10 w-[800px] h-[600px] flex flex-col items-center justify-center bg-[url('/trophy.png')] bg-cover bg-center"
+          >
+            {/* Overlay for readability */}
+            <div className="absolute inset-0 bg-background/90 z-0"></div>
+
+            <div className="relative z-10 flex flex-col items-center">
+              <h1 className="text-6xl font-black text-primary mb-4 tracking-tighter">
+                CHAMPION
+              </h1>
+              <div className="my-8 flex justify-center">
+                <img
+                  src="/trophy.png"
+                  alt="World Cup Trophy"
+                  className="h-48 drop-shadow-[0_0_25px_rgba(234,179,8,0.6)]"
+                />
+              </div>
+              <div className="text-5xl font-bold text-foreground mb-4">
+                {rounds["Final"][0].winner.name}
+              </div>
+              <div className="text-2xl text-muted-foreground uppercase tracking-widest font-mono">
+                FIFA World Cup 26
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
