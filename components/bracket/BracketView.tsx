@@ -20,6 +20,7 @@ export function BracketView() {
   const [rounds, setRounds] = useState<{ [key: string]: Match[] }>({});
   const [showChampionModal, setShowChampionModal] = useState(false);
   const bracketRef = useRef<HTMLDivElement>(null);
+  const championModalRef = useRef<HTMLDivElement>(null);
   const lastChampionId = useRef<string | null>(null);
 
   // Reload bracket when standings or bestThirds change
@@ -77,6 +78,29 @@ export function BracketView() {
         link.click();
       } catch (err) {
         console.error("Failed to generate image", err);
+      }
+    }
+  };
+
+  const handleChampionDownload = async () => {
+    if (championModalRef.current) {
+      try {
+        const dataUrl = await toPng(championModalRef.current, {
+          backgroundColor: "#000000",
+          filter: (node) => {
+            return !node.classList?.contains("noprint");
+          },
+          style: {
+            transform: "scale(1)",
+          },
+        });
+        const link = document.createElement("a");
+        link.download = "fifa-2026-champion.png";
+        link.href = dataUrl;
+        link.click();
+        setShowChampionModal(false);
+      } catch (err) {
+        console.error("Failed to generate champion image", err);
       }
     }
   };
@@ -218,14 +242,17 @@ export function BracketView() {
         >
           <div className="bg-gradient-to-br from-primary to-primary/40 p-1 rounded-2xl shadow-2xl relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('/trophy.png')] bg-cover opacity-10 blur-sm mix-blend-overlay"></div>
-            <div className="bg-card/95 rounded-xl p-12 text-center border border-primary/20 relative z-10 min-w-[400px]">
+            <div
+              ref={championModalRef}
+              className="bg-card/95 rounded-xl p-12 text-center border border-primary/20 relative z-10 min-w-[400px]"
+            >
               <h1 className="text-6xl font-black text-primary mb-4 tracking-tighter">
                 CHAMPION
               </h1>
 
               <Button
                 size="icon"
-                className="absolute top-4 right-4 bg-transparent hover:bg-muted text-muted-foreground rounded-full"
+                className="absolute top-4 right-4 bg-transparent hover:bg-muted text-muted-foreground rounded-full noprint"
                 onClick={() => setShowChampionModal(false)}
               >
                 ✕
@@ -243,7 +270,7 @@ export function BracketView() {
                 {rounds["Final"][0].winner.name}
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 noprint">
                 <Button
                   size="lg"
                   className="bg-muted hover:bg-muted/80 text-foreground font-bold"
@@ -253,10 +280,10 @@ export function BracketView() {
                 </Button>
                 <Button
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
-                  onClick={handleReset}
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold w-full"
+                  onClick={handleChampionDownload}
                 >
-                  New Prediction
+                  Save Image
                 </Button>
               </div>
             </div>
