@@ -1,57 +1,268 @@
 {
   "knockout_stage": {
     "round_of_32": [
-      { "match": "M73", "team1": "1H", "team2": "2J" },
-      { "match": "M74", "team1": "1I", "team2": "3 CDFGH" },
-      { "match": "M75", "team1": "1C", "team2": "2F" },
-      { "match": "M76", "team1": "2E", "team2": "2I" },
-      { "match": "M77", "team1": "1A", "team2": "3 CEFHI" },
-      { "match": "M78", "team1": "2D", "team2": "2G" },
-      { "match": "M79", "team1": "1D", "team2": "3 BEFIJ" },
-      { "match": "M80", "team1": "1K", "team2": "3 DEIJL" },
-      { "match": "M81", "team1": "1G", "team2": "3 AEHIJ" },
-      { "match": "M82", "team1": "1B", "team2": "3 EFGIJ" },
-      { "match": "M83", "team1": "2K", "team2": "2L" },
-      { "match": "M84", "team1": "1F", "team2": "2C" },
-      { "match": "M85", "team1": "1L", "team2": "3 EHIJK" },
-      { "match": "M86", "team1": "1J", "team2": "2H" },
-      { "match": "M87", "team1": "2K", "team2": "2L" },
-      { "match": "M88", "team1": "1E", "team2": "3 ABCDF" }
+      {
+        "match": 73,
+        "date": "28-Jun-26",
+        "team1": "2A",
+        "team2": "2B",
+        "venue": "SoFi Stadium",
+        "city": "Los Angeles"
+      },
+      {
+        "match": 74,
+        "date": "29-Jun-26",
+        "team1": "1E",
+        "team2": "3 ABCDF",
+        "venue": "Gillette Stadium",
+        "city": "Boston"
+      },
+      {
+        "match": 75,
+        "date": "29-Jun-26",
+        "team1": "1F",
+        "team2": "2C",
+        "venue": "Estadio BBVA",
+        "city": "Monterrey"
+      },
+      {
+        "match": 76,
+        "date": "29-Jun-26",
+        "team1": "1C",
+        "team2": "2F",
+        "venue": "NRG Stadium",
+        "city": "Houston"
+      },
+      {
+        "match": 77,
+        "date": "30-Jun-26",
+        "team1": "1I",
+        "team2": "3 CDFGH",
+        "venue": "MetLife Stadium",
+        "city": "New York/New Jersey"
+      },
+      {
+        "match": 78,
+        "date": "30-Jun-26",
+        "team1": "2E",
+        "team2": "2I",
+        "venue": "AT&T Stadium",
+        "city": "Dallas"
+      },
+      {
+        "match": 79,
+        "date": "30-Jun-26",
+        "team1": "1A",
+        "team2": "3 CEFHI",
+        "venue": "Estadio Azteca",
+        "city": "Mexico City"
+      },
+      {
+        "match": 80,
+        "date": "01-Jul-26",
+        "team1": "1L",
+        "team2": "3 EHIJK",
+        "venue": "Mercedes-Benz Stadium",
+        "city": "Atlanta"
+      },
+      {
+        "match": 81,
+        "date": "01-Jul-26",
+        "team1": "1D",
+        "team2": "3 BEFIJ",
+        "venue": "Levi's Stadium",
+        "city": "San Francisco Bay Area"
+      },
+      {
+        "match": 82,
+        "date": "01-Jul-26",
+        "team1": "1G",
+        "team2": "3 AEHIJ",
+        "venue": "Lumen Field",
+        "city": "Seattle"
+      },
+      {
+        "match": 83,
+        "date": "02-Jul-26",
+        "team1": "2K",
+        "team2": "2L",
+        "venue": "BMO Field",
+        "city": "Toronto"
+      },
+      {
+        "match": 84,
+        "date": "02-Jul-26",
+        "team1": "1H",
+        "team2": "2J",
+        "venue": "SoFi Stadium",
+        "city": "Los Angeles"
+      },
+      {
+        "match": 85,
+        "date": "02-Jul-26",
+        "team1": "1B",
+        "team2": "3 EFGIJ",
+        "venue": "BC Place",
+        "city": "Vancouver"
+      },
+      {
+        "match": 86,
+        "date": "03-Jul-26",
+        "team1": "1J",
+        "team2": "2H",
+        "venue": "Hard Rock Stadium",
+        "city": "Miami"
+      },
+      {
+        "match": 87,
+        "date": "03-Jul-26",
+        "team1": "1K",
+        "team2": "3 DEIJL",
+        "venue": "Arrowhead Stadium",
+        "city": "Kansas City"
+      },
+      {
+        "match": 88,
+        "date": "03-Jul-26",
+        "team1": "2D",
+        "team2": "2G",
+        "venue": "AT&T Stadium",
+        "city": "Dallas"
+      }
     ],
-
     "round_of_16": [
-      { "match": "M89", "team1": "W74", "team2": "W77" },
-      { "match": "M90", "team1": "W73", "team2": "W75" },
-      { "match": "M91", "team1": "W76", "team2": "W78" },
-      { "match": "M92", "team1": "W79", "team2": "W80" },
-      { "match": "M93", "team1": "W83", "team2": "W84" },
-      { "match": "M94", "team1": "W81", "team2": "W82" },
-      { "match": "M95", "team1": "W86", "team2": "W88" },
-      { "match": "M96", "team1": "W85", "team2": "W87" }
+      {
+        "match": 89,
+        "date": "04-Jul-26",
+        "team1": "W74",
+        "team2": "W77",
+        "venue": "Lincoln Financial Field",
+        "city": "Philadelphia"
+      },
+      {
+        "match": 90,
+        "date": "04-Jul-26",
+        "team1": "W73",
+        "team2": "W75",
+        "venue": "NRG Stadium",
+        "city": "Houston"
+      },
+      {
+        "match": 91,
+        "date": "05-Jul-26",
+        "team1": "W76",
+        "team2": "W78",
+        "venue": "MetLife Stadium",
+        "city": "New York/New Jersey"
+      },
+      {
+        "match": 92,
+        "date": "05-Jul-26",
+        "team1": "W79",
+        "team2": "W80",
+        "venue": "Estadio Azteca",
+        "city": "Mexico City"
+      },
+      {
+        "match": 93,
+        "date": "06-Jul-26",
+        "team1": "W83",
+        "team2": "W84",
+        "venue": "AT&T Stadium",
+        "city": "Dallas"
+      },
+      {
+        "match": 94,
+        "date": "06-Jul-26",
+        "team1": "W81",
+        "team2": "W82",
+        "venue": "Lumen Field",
+        "city": "Seattle"
+      },
+      {
+        "match": 95,
+        "date": "07-Jul-26",
+        "team1": "W86",
+        "team2": "W88",
+        "venue": "Mercedes-Benz Stadium",
+        "city": "Atlanta"
+      },
+      {
+        "match": 96,
+        "date": "07-Jul-26",
+        "team1": "W85",
+        "team2": "W87",
+        "venue": "BC Place",
+        "city": "Vancouver"
+      }
     ],
-
     "quarter_finals": [
-      { "match": "M97", "team1": "W89", "team2": "W90" },
-      { "match": "M98", "team1": "W93", "team2": "W94" },
-      { "match": "M99", "team1": "W91", "team2": "W92" },
-      { "match": "M100", "team1": "W95", "team2": "W96" }
+      {
+        "match": 97,
+        "date": "09-Jul-26",
+        "team1": "W89",
+        "team2": "W90",
+        "venue": "Gillette Stadium",
+        "city": "Boston"
+      },
+      {
+        "match": 98,
+        "date": "10-Jul-26",
+        "team1": "W93",
+        "team2": "W94",
+        "venue": "SoFi Stadium",
+        "city": "Los Angeles"
+      },
+      {
+        "match": 99,
+        "date": "11-Jul-26",
+        "team1": "W91",
+        "team2": "W92",
+        "venue": "Hard Rock Stadium",
+        "city": "Miami"
+      },
+      {
+        "match": 100,
+        "date": "11-Jul-26",
+        "team1": "W95",
+        "team2": "W96",
+        "venue": "Arrowhead Stadium",
+        "city": "Kansas City"
+      }
     ],
-
     "semi_finals": [
-      { "match": "M101", "team1": "W97", "team2": "W98" },
-      { "match": "M102", "team1": "W99", "team2": "W100" }
+      {
+        "match": 101,
+        "date": "14-Jul-26",
+        "team1": "W97",
+        "team2": "W98",
+        "venue": "AT&T Stadium",
+        "city": "Dallas"
+      },
+      {
+        "match": 102,
+        "date": "15-Jul-26",
+        "team1": "W99",
+        "team2": "W100",
+        "venue": "Mercedes-Benz Stadium",
+        "city": "Atlanta"
+      }
     ],
-
     "bronze_final": {
-      "match": "M103",
+      "match": 103,
+      "date": "18-Jul-26",
       "team1": "L101",
-      "team2": "L102"
+      "team2": "L102",
+      "venue": "Hard Rock Stadium",
+      "city": "Miami"
     },
-
     "final": {
-      "match": "M104",
+      "match": 104,
+      "date": "19-Jul-26",
       "team1": "W101",
-      "team2": "W102"
+      "team2": "W102",
+      "venue": "MetLife Stadium",
+      "city": "New York/New Jersey"
     }
   }
 }

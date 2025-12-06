@@ -120,7 +120,7 @@ export function generateFullBracket(
     }
 
     const m: Match = {
-      id: fix.match,
+      id: String(fix.match),
       round: "R32",
       homeTeam,
       awayTeam,
@@ -137,7 +137,7 @@ export function generateFullBracket(
   const buildRound = (roundKey: string, roundFixtures: any[]) => {
     roundFixtures.forEach((fix: any) => {
       const m: Match = {
-        id: fix.match,
+        id: String(fix.match),
         round: roundKey as any,
         homeTeam: undefined, // Filled later via sorting/linking
         awayTeam: undefined,
@@ -189,7 +189,8 @@ export function generateFullBracket(
       const mId = code.substring(1);
       const type = code.charAt(0);
       if (type === "W" || type === "L") {
-        return allMatchesLookup.get("M" + mId) || allMatchesLookup.get(mId);
+        // Look up by ID directly (e.g. "73")
+        return allMatchesLookup.get(mId);
       }
       return undefined;
     };
@@ -244,7 +245,7 @@ export function generateFullBracket(
   };
 
   // Start traversal from Final
-  const finalMatchId = fixtures.knockout_stage.final.match;
+  const finalMatchId = String(fixtures.knockout_stage.final.match);
   linkAndCollect(finalMatchId);
 
   // Also handle Bronze if needed (disconnected from main tree traversal if we only follow winners)
@@ -253,14 +254,16 @@ export function generateFullBracket(
   if (fixtures.knockout_stage.bronze_final) {
     // We don't recurse inputs because they are SFs already covered.
     // Just link logic.
-    const bz = allMatchesLookup.get(fixtures.knockout_stage.bronze_final.match);
+    const bz = allMatchesLookup.get(
+      String(fixtures.knockout_stage.bronze_final.match)
+    );
     if (bz) {
       const s1 = (bz as any)._source1;
       const s2 = (bz as any)._source2;
       // Link logic same as above needs to be run or reused.
       // For brevity, let's just re-resolve:
-      const m1 = allMatchesLookup.get("M" + s1.substring(1));
-      const m2 = allMatchesLookup.get("M" + s2.substring(1));
+      const m1 = allMatchesLookup.get(s1.substring(1));
+      const m2 = allMatchesLookup.get(s2.substring(1));
 
       if (m1 && m1.winner)
         bz.homeTeam =

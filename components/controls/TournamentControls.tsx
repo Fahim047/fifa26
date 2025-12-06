@@ -1,11 +1,11 @@
 "use client";
 
 import { useTournamentStore } from "@/lib/store";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 import { useMemo } from "react";
+import ThemeToggler from "../theme-toggler";
 
 export function TournamentControls() {
   const {
@@ -50,19 +50,24 @@ export function TournamentControls() {
   };
 
   return (
-    <div className="w-full md:w-[400px] h-full bg-slate-900 border-r border-slate-800 flex flex-col">
-      <div className="p-4 border-b border-slate-800 bg-slate-950/50 backdrop-blur">
-        <h2 className="text-xl font-bold text-white">Setup Tournament</h2>
-        <p className="text-xs text-muted-foreground">
-          Adjust Standings & Pick Top 8 Thirds
-        </p>
+    <div className="w-full md:w-[400px] h-full bg-muted/30 border-r border-border flex flex-col">
+      <div className="p-4 border-b border-border bg-card/50 backdrop-blur flex justify-between items-start">
+        <div>
+          <h2 className="text-xl font-bold text-foreground">
+            Setup Tournament
+          </h2>
+          <p className="text-xs text-muted-foreground">
+            Adjust Standings & Pick Top 8 Thirds
+          </p>
+        </div>
+        <ThemeToggler />
       </div>
 
       <ScrollArea className="flex-1 p-4">
         <div className="space-y-8">
           {/* Groups */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-blue-400 uppercase text-xs tracking-wider">
+            <h3 className="font-semibold uppercase text-xs tracking-wider">
               Group Standings
             </h3>
             {groups.map((group) => {
@@ -70,10 +75,10 @@ export function TournamentControls() {
               return (
                 <div
                   key={group.id}
-                  className="bg-slate-950 p-3 rounded-lg border border-slate-800/50"
+                  className="bg-card p-3 rounded-lg border border-border shadow-sm"
                 >
                   <div className="flex justify-between items-center mb-2">
-                    <span className="font-bold text-slate-300">
+                    <span className="font-bold text-foreground">
                       {group.name}
                     </span>
                   </div>
@@ -81,18 +86,18 @@ export function TournamentControls() {
                     {teams.map((team, idx) => (
                       <div
                         key={team.id}
-                        className="flex items-center gap-2 text-sm bg-slate-900 p-1 rounded"
+                        className="flex items-center gap-2 text-sm bg-muted/50 p-1 rounded"
                       >
                         <span
                           className={cn(
                             "w-5 h-5 flex items-center justify-center rounded text-[10px] font-bold",
                             idx === 0
-                              ? "bg-yellow-500/20 text-yellow-500"
+                              ? "bg-primary/20 text-primary"
                               : idx === 1
-                              ? "bg-blue-500/20 text-blue-500"
+                              ? "bg-secondary text-secondary-foreground"
                               : idx === 2
-                              ? "bg-orange-500/10 text-orange-500"
-                              : "text-slate-600"
+                              ? "bg-muted text-muted-foreground"
+                              : "text-muted-foreground/50"
                           )}
                         >
                           {idx + 1}
@@ -103,7 +108,7 @@ export function TournamentControls() {
                           {idx > 0 && (
                             <button
                               onClick={() => handleSwap(group.id, idx, idx - 1)}
-                              className="hover:text-white text-slate-500"
+                              className="hover:text-foreground text-muted-foreground"
                             >
                               ↑
                             </button>
@@ -111,7 +116,7 @@ export function TournamentControls() {
                           {idx < 3 && (
                             <button
                               onClick={() => handleSwap(group.id, idx, idx + 1)}
-                              className="hover:text-white text-slate-500"
+                              className="hover:text-foreground text-muted-foreground"
                             >
                               ↓
                             </button>
@@ -128,7 +133,7 @@ export function TournamentControls() {
           {/* Third Place Selection */}
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <h3 className="font-semibold text-orange-400 uppercase text-xs tracking-wider">
+              <h3 className="font-semibold text-muted-foreground uppercase text-xs tracking-wider">
                 Best 3rd Place ({bestThirds.length}/8)
               </h3>
             </div>
@@ -142,8 +147,8 @@ export function TournamentControls() {
                     className={cn(
                       "flex items-center gap-3 p-2 rounded cursor-pointer border transition-all",
                       isSelected
-                        ? "bg-orange-500/20 border-orange-500/50"
-                        : "bg-slate-950 border-slate-800 hover:border-slate-700"
+                        ? "bg-primary/10 border-primary"
+                        : "bg-card border-border hover:border-primary/50"
                     )}
                   >
                     <Checkbox checked={isSelected} />
@@ -163,16 +168,23 @@ export function TournamentControls() {
         </div>
       </ScrollArea>
 
-      <div className="p-4 border-t border-slate-800 bg-slate-950">
-        <Button
-          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 font-bold"
-          onClick={() => setBracketReady(true)} // In new logic, just refreshes
-          disabled={bestThirds.length !== 8}
+      <div className="p-4 border-t border-border bg-card">
+        <div
+          className={cn(
+            "w-full py-3 px-4 rounded-lg text-center font-bold text-sm transition-colors border",
+            bestThirds.length === 8
+              ? "bg-primary/10 text-primary border-primary/20"
+              : "bg-muted text-muted-foreground border-border"
+          )}
         >
-          {bestThirds.length !== 8
-            ? `Select ${8 - bestThirds.length} more`
-            : "Update Bracket"}
-        </Button>
+          {bestThirds.length === 8 ? (
+            <span className="flex items-center justify-center gap-2">
+              <span className="text-lg">✓</span> Bracket Ready
+            </span>
+          ) : (
+            <span>Select {8 - bestThirds.length} more 3rd place teams</span>
+          )}
+        </div>
       </div>
     </div>
   );

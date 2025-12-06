@@ -71,10 +71,10 @@ export function GroupCard({ group }: GroupCardProps) {
                   className={cn(
                     "w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm",
                     idx === 0
-                      ? "bg-yellow-500/20 text-yellow-600"
+                      ? "bg-primary/20 text-primary"
                       : idx === 1
-                      ? "bg-slate-300/20 text-slate-600"
-                      : "bg-muted text-muted-foreground"
+                      ? "bg-muted text-muted-foreground"
+                      : "bg-muted/50 text-muted-foreground/50"
                   )}
                 >
                   {idx + 1}
