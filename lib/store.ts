@@ -14,6 +14,10 @@ interface TournamentState {
   bracketReady: boolean;
   setBracketReady: (ready: boolean) => void;
 
+  // Map of MatchID -> Winner TeamID
+  matchDecisions: Record<string, string>;
+  setMatchDecision: (matchId: string, winnerId: string) => void;
+
   // To track manual bracket progress if needed, though mostly derived
   matchWinners: { [matchId: string]: Team };
   setMatchWinner: (matchId: string, winner: Team) => void;
@@ -29,6 +33,7 @@ export const useTournamentStore = create<TournamentState>()(
       }, {} as GroupStandings),
       bestThirds: [],
       bracketReady: false,
+      matchDecisions: {},
       matchWinners: {},
 
       setGroupStanding: (groupId, teams) =>
@@ -42,6 +47,14 @@ export const useTournamentStore = create<TournamentState>()(
       setBestThirds: (teamIds) => set({ bestThirds: teamIds }),
 
       setBracketReady: (ready) => set({ bracketReady: ready }),
+
+      setMatchDecision: (matchId, winnerId) =>
+        set((state) => ({
+          matchDecisions: {
+            ...state.matchDecisions,
+            [matchId]: winnerId,
+          },
+        })),
 
       setMatchWinner: (matchId, winner) =>
         set((state) => ({

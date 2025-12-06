@@ -3,7 +3,7 @@
 import { useTournamentStore } from "@/lib/store";
 import { GroupCard } from "./GroupCard";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export function GroupStageView() {
   const { groups, setBracketReady } = useTournamentStore();

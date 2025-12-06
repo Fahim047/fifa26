@@ -12,78 +12,101 @@ interface MatchNodeProps {
 export function MatchNode({ match, onMatchClick, className }: MatchNodeProps) {
   const isDecided = !!match.winner;
 
-  // Render a placeholder if teams aren't determined yet
+  // Placeholder
   if (!match.homeTeam && !match.awayTeam) {
     return (
       <div
         className={cn(
-          "w-48 h-24 bg-slate-800/50 rounded-lg border border-slate-700 flex items-center justify-center text-slate-500 text-xs",
+          "w-64 h-24 rounded-xl border border-dashed border-slate-800 bg-slate-950/30 flex items-center justify-center",
           className
         )}
       >
-        TBD
+        <span className="text-slate-700 font-medium text-xs uppercase tracking-widest">
+          TBD
+        </span>
       </div>
     );
   }
 
   return (
-    <div className={cn("flex flex-col gap-1 w-56 relative group", className)}>
-      {/* Connector Line Logic handle in parent/layout usually, or simple CSS here */}
-
-      <div className="bg-slate-900 border border-slate-700 rounded-lg overflow-hidden shadow-lg transition-all hover:border-slate-500">
+    <div className={cn("flex flex-col w-64 relative group z-10", className)}>
+      <div className="relative overflow-hidden rounded-xl border border-slate-800 bg-slate-900/80 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-slate-600 hover:shadow-2xl hover:-translate-y-0.5 hover:shadow-purple-900/20">
         {/* Home Team */}
         <div
           onClick={() => match.homeTeam && onMatchClick(match, match.homeTeam)}
           className={cn(
-            "p-2 flex items-center justify-between cursor-pointer transition-colors hover:bg-slate-800",
+            "h-12 px-4 flex items-center justify-between cursor-pointer transition-all duration-200 border-b border-slate-800/50 hover:bg-white/5",
             match.winner?.id === match.homeTeam?.id
-              ? "bg-gradient-to-r from-blue-900/50 to-purple-900/50"
+              ? "bg-gradient-to-r from-blue-600/20 to-purple-600/20"
               : "",
             match.winner && match.winner.id !== match.homeTeam?.id
-              ? "opacity-50"
+              ? "opacity-40 grayscale"
               : ""
           )}
         >
-          <div className="flex items-center gap-2">
-            {/* Flag placeholder */}
-            <span className="w-6 h-4 bg-slate-700 rounded-sm inline-block" />
-            <span className="font-semibold text-sm">
+          <div className="flex items-center gap-3">
+            <div
+              className={cn(
+                "w-1 h-1 rounded-full",
+                match.winner?.id === match.homeTeam?.id
+                  ? "bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.8)]"
+                  : "bg-slate-600"
+              )}
+            ></div>
+            <span
+              className={cn(
+                "font-medium text-sm tracking-wide",
+                match.winner?.id === match.homeTeam?.id
+                  ? "text-white"
+                  : "text-slate-300"
+              )}
+            >
               {match.homeTeam?.name || "TBD"}
             </span>
           </div>
           {match.winner?.id === match.homeTeam?.id && (
-            <span className="text-green-400 text-xs">✔</span>
+            <span className="text-blue-400 text-xs font-bold">WIN</span>
           )}
         </div>
-
-        <div className="h-[1px] bg-slate-700 w-full" />
 
         {/* Away Team */}
         <div
           onClick={() => match.awayTeam && onMatchClick(match, match.awayTeam)}
           className={cn(
-            "p-2 flex items-center justify-between cursor-pointer transition-colors hover:bg-slate-800",
+            "h-12 px-4 flex items-center justify-between cursor-pointer transition-all duration-200 hover:bg-white/5",
             match.winner?.id === match.awayTeam?.id
-              ? "bg-gradient-to-r from-blue-900/50 to-purple-900/50"
+              ? "bg-gradient-to-r from-blue-600/20 to-purple-600/20"
               : "",
             match.winner && match.winner.id !== match.awayTeam?.id
-              ? "opacity-50"
+              ? "opacity-40 grayscale"
               : ""
           )}
         >
-          <div className="flex items-center gap-2">
-            <span className="w-6 h-4 bg-slate-700 rounded-sm inline-block" />
-            <span className="font-semibold text-sm">
+          <div className="flex items-center gap-3">
+            <div
+              className={cn(
+                "w-1 h-1 rounded-full",
+                match.winner?.id === match.awayTeam?.id
+                  ? "bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.8)]"
+                  : "bg-slate-600"
+              )}
+            ></div>
+            <span
+              className={cn(
+                "font-medium text-sm tracking-wide",
+                match.winner?.id === match.awayTeam?.id
+                  ? "text-white"
+                  : "text-slate-300"
+              )}
+            >
               {match.awayTeam?.name || "TBD"}
             </span>
           </div>
           {match.winner?.id === match.awayTeam?.id && (
-            <span className="text-green-400 text-xs">✔</span>
+            <span className="text-blue-400 text-xs font-bold">WIN</span>
           )}
         </div>
       </div>
-
-      <div className="absolute -right-4 top-1/2 w-4 h-[2px] bg-slate-700 hidden group-hover:block" />
     </div>
   );
 }
