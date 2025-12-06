@@ -125,6 +125,9 @@ export function generateFullBracket(
       homeTeam,
       awayTeam,
       winner: undefined,
+      matchNumber: fix.match,
+      venue: fix.venue,
+      city: fix.city,
     };
 
     applyDecision(m, matchDecisions);
@@ -142,6 +145,9 @@ export function generateFullBracket(
         homeTeam: undefined, // Filled later via sorting/linking
         awayTeam: undefined,
         winner: undefined,
+        matchNumber: fix.match,
+        venue: fix.venue,
+        city: fix.city,
       };
       // Store raw fixture info for linking
       (m as any)._source1 = fix.team1;

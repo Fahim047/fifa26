@@ -19,6 +19,9 @@ export type Match = {
   winner?: Team;
   nextMatchId?: string; // Pointer to the next match
   nextMatchSlot?: "home" | "away";
+  matchNumber?: number;
+  venue?: string;
+  city?: string;
 };
 
 export type GroupStandings = {

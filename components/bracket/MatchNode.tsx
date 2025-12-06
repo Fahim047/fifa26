@@ -1,7 +1,7 @@
 "use client";
 
 import { Match, Team } from "@/types";
-import { cn } from "@/lib/utils";
+import { cn, getFlagUrl } from "@/lib/utils";
 
 interface MatchNodeProps {
   match: Match;
@@ -31,6 +31,23 @@ export function MatchNode({ match, onMatchClick, className }: MatchNodeProps) {
   return (
     <div className={cn("flex flex-col w-64 relative group z-10", className)}>
       <div className="relative overflow-hidden rounded-xl border border-border bg-card/80 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:-translate-y-0.5 hover:shadow-primary/10">
+        {/* Match Info Header */}
+        {(match.matchNumber || match.venue) && (
+          <div className="bg-muted/30 px-3 py-1.5 flex justify-between items-center border-b border-border/50 font-mono text-[10px] text-muted-foreground">
+            <span className="font-bold text-primary/80">
+              M{match.matchNumber}
+            </span>
+            <div className="flex flex-col items-end leading-tight overflow-hidden max-w-[170px]">
+              <span className="font-semibold text-foreground/90 truncate w-full text-right block">
+                {match.city}
+              </span>
+              <span className="text-[9px] text-muted-foreground/80 truncate w-full text-right block">
+                {match.venue}
+              </span>
+            </div>
+          </div>
+        )}
+
         {/* Home Team */}
         <div
           onClick={() => match.homeTeam && onMatchClick(match, match.homeTeam)}
@@ -45,14 +62,24 @@ export function MatchNode({ match, onMatchClick, className }: MatchNodeProps) {
           )}
         >
           <div className="flex items-center gap-3">
-            <div
-              className={cn(
-                "w-1 h-1 rounded-full",
-                match.winner?.id === match.homeTeam?.id
-                  ? "bg-primary shadow-[0_0_10px_rgba(var(--primary),0.8)]"
-                  : "bg-muted-foreground"
+            <div className="w-5 flex justify-center">
+              {getFlagUrl(match.homeTeam?.id) ? (
+                <img
+                  src={getFlagUrl(match.homeTeam?.id)}
+                  alt={match.homeTeam?.code}
+                  className="w-5 h-auto rounded-sm shadow-sm object-cover"
+                />
+              ) : (
+                <div
+                  className={cn(
+                    "w-1.5 h-1.5 rounded-full",
+                    match.winner?.id === match.homeTeam?.id
+                      ? "bg-primary shadow-[0_0_10px_rgba(var(--primary),0.8)]"
+                      : "bg-muted-foreground"
+                  )}
+                ></div>
               )}
-            ></div>
+            </div>
             <span
               className={cn(
                 "font-medium text-sm tracking-wide",
@@ -83,14 +110,24 @@ export function MatchNode({ match, onMatchClick, className }: MatchNodeProps) {
           )}
         >
           <div className="flex items-center gap-3">
-            <div
-              className={cn(
-                "w-1 h-1 rounded-full",
-                match.winner?.id === match.awayTeam?.id
-                  ? "bg-primary shadow-[0_0_10px_rgba(var(--primary),0.8)]"
-                  : "bg-muted-foreground"
+            <div className="w-5 flex justify-center">
+              {getFlagUrl(match.awayTeam?.id) ? (
+                <img
+                  src={getFlagUrl(match.awayTeam?.id)}
+                  alt={match.awayTeam?.code}
+                  className="w-5 h-auto rounded-sm shadow-sm object-cover"
+                />
+              ) : (
+                <div
+                  className={cn(
+                    "w-1.5 h-1.5 rounded-full",
+                    match.winner?.id === match.awayTeam?.id
+                      ? "bg-primary shadow-[0_0_10px_rgba(var(--primary),0.8)]"
+                      : "bg-muted-foreground"
+                  )}
+                ></div>
               )}
-            ></div>
+            </div>
             <span
               className={cn(
                 "font-medium text-sm tracking-wide",

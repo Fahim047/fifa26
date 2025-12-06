@@ -126,8 +126,8 @@ export function BracketView() {
 
   return (
     <div className="w-full h-full overflow-hidden flex flex-col bg-background">
-      <div className="flex justify-between items-center p-4 border-b border-border bg-card/50 backdrop-blur-sm z-20 shadow-sm">
-        <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+      <div className="flex justify-between items-center p-2 md:p-4 border-b border-border bg-card/50 backdrop-blur-sm z-20 shadow-sm">
+        <h2 className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
           FIFA 26
         </h2>
         <div className="flex gap-2">
@@ -137,14 +137,17 @@ export function BracketView() {
           <Button
             onClick={handleDownload}
             variant="secondary"
-            className="gap-2"
+            className="gap-2 text-xs md:text-sm h-8 md:h-10 px-3 md:px-4"
           >
             <span>📷</span> Save Image
           </Button>
         </div>
       </div>
 
-      <div className="flex-1 overflow-auto bg-background p-8" ref={bracketRef}>
+      <div
+        className="flex-1 overflow-auto bg-background p-4 md:p-8"
+        ref={bracketRef}
+      >
         <div className="flex gap-0 min-w-max pb-20 items-stretch">
           {roundOrder.map((roundKey, roundIdx) => {
             if (!rounds[roundKey]) return null;

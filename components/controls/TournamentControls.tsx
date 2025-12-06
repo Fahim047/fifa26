@@ -168,10 +168,10 @@ export function TournamentControls() {
         </div>
       </ScrollArea>
 
-      <div className="p-4 border-t border-border bg-card">
+      <div className="p-2 md:p-4 border-t border-border bg-card">
         <div
           className={cn(
-            "w-full py-3 px-4 rounded-lg text-center font-bold text-sm transition-colors border",
+            "w-full px-1 px-2 md:px-4 py-2 md:py-3 px-4 rounded-lg text-center font-bold text-sm transition-colors border",
             bestThirds.length === 8
               ? "bg-primary/10 text-primary border-primary/20"
               : "bg-muted text-muted-foreground border-border"
