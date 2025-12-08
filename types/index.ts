@@ -13,7 +13,7 @@ export type Group = {
 
 export type Match = {
   id: string;
-  round: "R32" | "R16" | "QF" | "SF" | "Final";
+  round: "Group" | "R32" | "R16" | "QF" | "SF" | "Final";
   homeTeam?: Team;
   awayTeam?: Team;
   winner?: Team;
@@ -23,6 +23,7 @@ export type Match = {
   venue?: string;
   city?: string;
   date?: string;
+  time?: string;
 };
 
 export type GroupStandings = {

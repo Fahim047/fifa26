@@ -277,29 +277,6 @@ export default function FIFA2026Landing() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="relative rounded-3xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-12 md:p-16 overflow-hidden">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-30"></div>
-
-            <div className="relative z-10 text-center">
-              <h3 className="text-3xl md:text-5xl font-black mb-6">
-                Ready to Join the Global Celebration?
-              </h3>
-              <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                Create your account today and be part of the most exciting World
-                Cup ever. Get exclusive access, personalized content, and join
-                millions of fans worldwide.
-              </p>
-              <button className="bg-white text-purple-600 hover:bg-slate-100 px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:scale-105">
-                Get Started Free
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="border-t border-slate-800 py-12 px-6">
         <div className="max-w-7xl mx-auto text-center text-slate-500 text-sm">
