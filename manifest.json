@@ -1,0 +1,21 @@
+{
+  "name": "FIFA World Cup 26",
+  "short_name": "FIFA 26",
+  "icons": [
+    {
+      "src": "/trophy.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/trophy.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#022c22",
+  "background_color": "#022c22",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}

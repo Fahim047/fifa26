@@ -128,6 +128,7 @@ export function generateFullBracket(
       matchNumber: fix.match,
       venue: fix.venue,
       city: fix.city,
+      date: fix.date,
     };
 
     applyDecision(m, matchDecisions);
@@ -148,6 +149,7 @@ export function generateFullBracket(
         matchNumber: fix.match,
         venue: fix.venue,
         city: fix.city,
+        date: fix.date,
       };
       // Store raw fixture info for linking
       (m as any)._source1 = fix.team1;

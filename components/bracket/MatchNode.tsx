@@ -34,14 +34,19 @@ export function MatchNode({ match, onMatchClick, className }: MatchNodeProps) {
         {/* Match Info Header */}
         {(match.matchNumber || match.venue) && (
           <div className="bg-muted/30 px-3 py-1.5 flex justify-between items-center border-b border-border/50 font-mono text-[10px] text-muted-foreground">
-            <span className="font-bold text-primary/80">
-              M{match.matchNumber}
-            </span>
-            <div className="flex flex-col items-end leading-tight overflow-hidden max-w-[170px]">
-              <span className="font-semibold text-foreground/90 truncate w-full text-right block">
+            <div className="flex flex-col items-start leading-tight">
+              <span className="font-bold text-primary/80">
+                M{match.matchNumber}
+              </span>
+              <span className="text-[9px] text-muted-foreground/70">
+                {match.date}
+              </span>
+            </div>
+            <div className="flex flex-col items-end leading-tight overflow-hidden max-w-[150px]">
+              <span className="font-semibold text-foreground/90 truncate w-full text-right block leading-tight">
                 {match.city}
               </span>
-              <span className="text-[9px] text-muted-foreground/80 truncate w-full text-right block">
+              <span className="text-[9px] text-muted-foreground/80 truncate w-full text-right block leading-tight">
                 {match.venue}
               </span>
             </div>

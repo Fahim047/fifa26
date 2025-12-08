@@ -22,6 +22,7 @@ export type Match = {
   matchNumber?: number;
   venue?: string;
   city?: string;
+  date?: string;
 };
 
 export type GroupStandings = {
