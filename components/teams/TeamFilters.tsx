@@ -61,7 +61,7 @@ export function TeamFilters({
             placeholder="Search teams..."
             value={search}
             onChange={(e) => handleSearchChange(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-800 rounded-xl focus:border-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 backdrop-blur-sm text-foreground placeholder:text-muted-foreground"
+            className="w-full pl-12 pr-4 py-3 border border-slate-800 rounded-xl focus:border-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 backdrop-blur-sm text-foreground placeholder:text-muted-foreground"
           />
         </div>
 
@@ -70,7 +70,7 @@ export function TeamFilters({
           <select
             value={selectedGroup}
             onChange={(e) => handleGroupChange(e.target.value)}
-            className="w-full px-4 py-3 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-800 rounded-xl focus:border-purple-500/50 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 backdrop-blur-sm text-foreground appearance-none cursor-pointer"
+            className="w-full px-4 py-3 border border-slate-800 rounded-xl focus:border-purple-500/50 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 backdrop-blur-sm text-foreground appearance-none cursor-pointer"
           >
             <option value="">All Groups</option>
             {groups.map((group) => (
@@ -97,7 +97,7 @@ export function TeamFilters({
         </div>
 
         {/* View Toggle */}
-        <div className="flex items-center gap-2 bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-800 rounded-xl p-1 backdrop-blur-sm">
+        <div className="flex items-center gap-2 border border-slate-800 rounded-xl p-1 backdrop-blur-sm">
           <button
             onClick={() => onViewChange("grid")}
             className={`relative px-4 py-2 rounded-lg transition-all duration-300 ${
@@ -109,7 +109,7 @@ export function TeamFilters({
             {currentView === "grid" && (
               <motion.div
                 layoutId="view-indicator"
-                className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg"
+                className="absolute inset-0 bg-yellow-600 rounded-lg"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}
@@ -129,7 +129,7 @@ export function TeamFilters({
             {currentView === "groups" && (
               <motion.div
                 layoutId="view-indicator"
-                className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg"
+                className="absolute inset-0 bg-violet-600 rounded-lg"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}
@@ -147,7 +147,7 @@ export function TeamFilters({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             onClick={clearFilters}
-            className="px-4 py-2 bg-gradient-to-r from-red-600/20 to-orange-600/20 border border-red-500/30 rounded-xl hover:border-red-500/50 transition-all duration-300 text-red-400 hover:text-red-300 flex items-center gap-2 backdrop-blur-sm"
+            className="px-4 py-2 border border-slate-800 rounded-xl hover:border-red-500/50 transition-all duration-300 text-red-400 hover:text-red-300 flex items-center gap-2 backdrop-blur-sm"
           >
             <X className="w-4 h-4" />
             <span className="hidden sm:inline">Clear</span>
@@ -171,7 +171,7 @@ export function TeamFilters({
               </span>
             )}
             {selectedGroup && (
-              <span className="px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-400">
+              <span className="px-3 py-1 bg-yellow-500/20 border border-yellow-500/30 rounded-full text-yellow-400">
                 Group {selectedGroup}
               </span>
             )}

@@ -42,13 +42,13 @@ export function GroupView({ groups }: GroupViewProps) {
             {/* Group Header */}
             <div className="relative">
               <div
-                className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-10 rounded-2xl blur-xl`}
+                className={`absolute inset-0 bg-linear-to-r ${gradient} opacity-10 rounded-2xl blur-xl`}
               />
-              <div className="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm border border-slate-700 rounded-2xl p-6">
+              <div className="relative backdrop-blur-sm border border-slate-700 rounded-2xl p-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div
-                      className={`w-16 h-16 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg`}
+                      className={`w-16 h-16 rounded-xl bg-linear-to-br ${gradient} flex items-center justify-center shadow-lg`}
                     >
                       <span className="text-3xl font-black text-white">
                         {group.id}
@@ -64,7 +64,7 @@ export function GroupView({ groups }: GroupViewProps) {
 
                   {/* Group Identifier Badge */}
                   <div
-                    className={`hidden sm:block px-6 py-2 rounded-full bg-gradient-to-r ${gradient} border border-white/10 opacity-80`}
+                    className={`hidden sm:block px-6 py-2 rounded-full bg-linear-to-r ${gradient} border border-white/10 opacity-80`}
                   >
                     <span className={`text-sm font-semibold bg-clip-text`}>
                       Group Stage

@@ -1,7 +1,7 @@
 "use client";
 
-import { Match } from "@/types";
-import { FixtureCard } from "./FixtureCard";
+import type { Match } from "@/types";
+import { FixtureCard } from "./fixture-card";
 import { motion } from "motion/react";
 
 interface FixtureListProps {
@@ -12,12 +12,11 @@ export function FixtureList({ fixtures }: FixtureListProps) {
   if (fixtures.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
-        <div className="text-6xl mb-4">⚽</div>
-        <h3 className="text-2xl font-bold text-foreground mb-2">
+        <h3 className="text-xl font-semibold text-foreground mb-2">
           No matches found
         </h3>
-        <p className="text-muted-foreground">
-          Try adjusting your filters to see more results
+        <p className="text-muted-foreground text-sm">
+          Try adjusting your filters
         </p>
       </div>
     );
@@ -33,18 +32,28 @@ export function FixtureList({ fixtures }: FixtureListProps) {
 
   const sortedDates = Object.keys(fixturesByDate).sort();
 
+  const formatDateHeader = (dateStr: string): string => {
+    if (dateStr === "TBD") return "To Be Determined";
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
   return (
-    <div className="space-y-12">
+    <div className="space-y-10">
       {sortedDates.map((date, dateIdx) => (
         <motion.div
           key={date}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: dateIdx * 0.1 }}
+          transition={{ delay: dateIdx * 0.05 }}
         >
-          {/* Date Header */}
-          <div className="mb-6">
-            <h3 className="text-2xl font-bold text-foreground">
+          <div className="mb-5">
+            <h3 className="text-lg font-semibold text-foreground">
               {formatDateHeader(date)}
             </h3>
             <p className="text-sm text-muted-foreground">
@@ -53,14 +62,13 @@ export function FixtureList({ fixtures }: FixtureListProps) {
             </p>
           </div>
 
-          {/* Match Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {fixturesByDate[date].map((match, idx) => (
               <motion.div
                 key={match.id}
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: dateIdx * 0.1 + idx * 0.05 }}
+                transition={{ delay: dateIdx * 0.05 + idx * 0.02 }}
               >
                 <FixtureCard match={match} />
               </motion.div>
@@ -70,16 +78,4 @@ export function FixtureList({ fixtures }: FixtureListProps) {
       ))}
     </div>
   );
-}
-
-function formatDateHeader(dateStr: string): string {
-  if (dateStr === "TBD") return "To Be Determined";
-
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
 }

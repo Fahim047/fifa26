@@ -34,7 +34,7 @@ export function generateGroupStageMatches(): Match[] {
   const startDate = new Date("2026-06-11T00:00:00Z");
   let currentDate = new Date(startDate);
 
-  INITIAL_GROUPS.forEach((group, groupIdx) => {
+  INITIAL_GROUPS.forEach((group) => {
     const teams = group.teams;
 
     // Round Robin: Generate all unique pairs

@@ -82,11 +82,11 @@ export function TeamCard({ team, groupId }: TeamCardProps) {
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.3 }}
-      className="group relative p-6 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-800 hover:border-slate-700 transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-sm"
+      className="group relative p-6 rounded-2xl  border border-slate-800 hover:border-slate-700 transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-sm"
     >
       {/* Gradient overlay on hover */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+        className={`absolute inset-0 bg-linear-to-br ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
       />
 
       {/* Content */}
@@ -98,7 +98,7 @@ export function TeamCard({ team, groupId }: TeamCardProps) {
 
         {/* Team Info */}
         <div className="space-y-2">
-          <h3 className="text-xl font-bold group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
+          <h3 className="text-xl font-bold group-hover:text-transparent group-hover:bg-linear-to-r group-hover:from-yellow-600 group-hover:to-violet-600 group-hover:bg-clip-text transition-all duration-300">
             {team.name}
           </h3>
           <div className="flex items-center justify-center gap-2">
@@ -109,7 +109,7 @@ export function TeamCard({ team, groupId }: TeamCardProps) {
               <>
                 <span className="text-muted-foreground">•</span>
                 <span
-                  className={`text-sm font-semibold bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}
+                  className={`text-sm font-semibold bg-linear-to-r ${gradient} bg-clip-text text-transparent`}
                 >
                   Group {groupId}
                 </span>
@@ -121,7 +121,7 @@ export function TeamCard({ team, groupId }: TeamCardProps) {
 
       {/* Shine effect */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/5 to-transparent" />
+        <div className="absolute top-0 left-0 w-full h-full bg-linear-to-br from-white/5 to-transparent" />
       </div>
     </motion.div>
   );
